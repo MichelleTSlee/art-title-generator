@@ -1,7 +1,6 @@
 "use client";
 import React, { useRef, useState, useCallback } from "react";
 
-// --- UI CONFIG ---
 const TONES = ["poetic", "cinematic", "minimal", "lyrical", "mysterious"] as const;
 type Tone = typeof TONES[number];
 
@@ -23,7 +22,6 @@ export default function TitleToolPage() {
   const [result, setResult] = useState<TitleResult | null>(null);
   const fileRef = useRef<HTMLInputElement>(null);
 
-  // --- FILE HANDLERS ---
   const onSelectFile = useCallback((file?: File | null) => {
     if (!file) return;
     if (!file.type.startsWith("image/")) {
@@ -58,7 +56,6 @@ export default function TitleToolPage() {
     e.preventDefault();
   };
 
-  // --- API CALL ---
   async function handleGenerate() {
     if (!imageDataUrl) {
       setError("Add an artwork image first.");
@@ -87,31 +84,30 @@ export default function TitleToolPage() {
 
   const copyText = (text: string) => navigator.clipboard.writeText(text);
 
-  // --- UI ---
   return (
-    <main className="mx-auto max-w-xl p-4 sm:p-6">
+    <main className="mx-auto max-w-xl p-4 sm:p-6 bg-white text-gray-900">
       {/* Header */}
       <header className="mb-6 sm:mb-8">
         <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight">Art Title Generator</h1>
-        <p className="text-sm text-gray-600 mt-2">
+        <p className="text-sm text-gray-700 mt-2">
           Upload your artwork, pick a tone, add optional keywords, and get 12 title options with 3 short rationales.
         </p>
       </header>
 
       {/* Card */}
-      <section className="rounded-2xl border bg-white shadow-sm p-4 sm:p-6">
-        {/* SELECT IMAGE BUTTON (mobile friendly) */}
+      <section className="rounded-2xl border border-slate-300 bg-white shadow-sm p-4 sm:p-6">
+        {/* SELECT IMAGE BUTTON */}
         <div className="mb-4">
           {imageDataUrl ? (
             <div>
               <img
                 src={imageDataUrl}
                 alt="preview"
-                className="w-full rounded-xl border aspect-auto object-contain max-h-[50vh]"
+                className="w-full rounded-xl border border-slate-300 aspect-auto object-contain max-h-[50vh] bg-white"
               />
               <div className="flex gap-3 mt-2">
                 <button
-                  className="text-sm underline"
+                  className="text-sm underline text-gray-900"
                   onClick={() => {
                     setImageDataUrl("");
                     setResult(null);
@@ -120,7 +116,7 @@ export default function TitleToolPage() {
                   Remove image
                 </button>
                 <button
-                  className="text-sm underline"
+                  className="text-sm underline text-gray-900"
                   onClick={() => fileRef.current?.click()}
                 >
                   Change image
@@ -130,13 +126,13 @@ export default function TitleToolPage() {
           ) : (
             <div className="text-center">
               <button
-                className="inline-flex items-center justify-center w-full sm:w-auto px-4 py-3 rounded-xl bg-black text-white font-medium"
+                className="inline-flex items-center justify-center w-full sm:w-auto px-4 py-3 rounded-xl bg-black text-white font-medium shadow hover:shadow-md transition"
                 onClick={() => fileRef.current?.click()}
               >
                 Select artwork image
               </button>
               <div
-                className="mt-3 text-xs text-gray-500 border border-dashed rounded-xl p-4"
+                className="mt-3 text-xs text-gray-700 border border-dashed rounded-xl p-4"
                 onDrop={onDrop}
                 onDragOver={onDragOver}
               >
@@ -156,23 +152,23 @@ export default function TitleToolPage() {
         {/* Controls */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4">
           <label className="flex flex-col">
-            <span className="text-sm mb-1">Tone</span>
+            <span className="text-sm mb-1 text-gray-900">Tone</span>
             <select
               value={tone}
               onChange={(e) => setTone(e.target.value as Tone)}
-              className="border rounded-lg p-2"
+              className="border border-slate-400 rounded-lg p-2 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-black"
             >
               {TONES.map((t) => (
-                <option key={t} value={t}>
+                <option key={t} value={t} className="text-gray-900 bg-white">
                   {t}
                 </option>
               ))}
             </select>
           </label>
           <label className="flex flex-col">
-            <span className="text-sm mb-1">Keywords (optional)</span>
+            <span className="text-sm mb-1 text-gray-900">Keywords (optional)</span>
             <input
-              className="border rounded-lg p-2"
+              className="border border-slate-400 rounded-lg p-2 bg-white text-gray-900 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-black"
               placeholder="e.g., mist, winter dusk, tidal flats, memory"
               value={keywords}
               onChange={(e) => setKeywords(e.target.value)}
@@ -190,67 +186,69 @@ export default function TitleToolPage() {
 
         {/* Error */}
         {error && (
-          <div className="mt-4 text-sm text-red-600 bg-red-50 border border-red-200 p-3 rounded-lg">
+          <div className="mt-4 text-sm text-red-700 bg-red-100 border border-red-300 p-3 rounded-lg">
             {error}
           </div>
         )}
       </section>
 
-      {/* RESULTS CARD */}
+      {/* RESULTS */}
       {result && (
-        <section className="mt-6 rounded-2xl border bg-white shadow-sm p-4 sm:p-6">
+        <section className="mt-6 rounded-2xl border border-slate-300 bg-white shadow-sm p-4 sm:p-6">
           <div className="flex items-baseline justify-between gap-3 flex-wrap">
             <h2 className="text-lg sm:text-xl font-semibold">Results</h2>
-            <p className="text-sm text-gray-600">Tone: {result.tone || <em>(not returned)</em>}</p>
+            <p className="text-sm text-gray-800">Tone: {result.tone || <em>(not returned)</em>}</p>
           </div>
 
           {/* Titles */}
           <div className="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-3">
             {Array.isArray(result.titles) && result.titles.length > 0 ? (
               result.titles.map((t, i) => (
-                <div key={i} className="flex items-center justify-between border rounded-lg p-2">
-                  <span className="pr-3 break-words whitespace-normal max-w-full">{t}</span>
-                  <button className="text-sm underline" onClick={() => copyText(t)}>Copy</button>
+                <div key={i} className="flex items-center justify-between border border-slate-300 rounded-lg p-2 bg-white">
+                  <span className="pr-3 break-words whitespace-normal max-w-full text-gray-900">{t}</span>
+                  <button className="text-sm underline text-gray-900" onClick={() => copyText(t)}>
+                    Copy
+                  </button>
                 </div>
               ))
             ) : (
-              <div className="text-sm text-gray-600">No titles returned.</div>
+              <div className="text-sm text-gray-800">No titles returned.</div>
             )}
           </div>
 
           {/* Rationales */}
           <div className="mt-6">
-            <h3 className="font-medium mb-2">Top picks & why</h3>
+            <h3 className="font-medium mb-2 text-gray-900">Top picks & why</h3>
             {Array.isArray(result.top_rationales) && result.top_rationales.length > 0 ? (
-              <ul className="list-disc ml-5 space-y-2">
+              <ul className="list-disc ml-5 space-y-2 text-gray-900">
                 {result.top_rationales.map((r, i) => (
                   <li key={i}>
-                    <span className="font-medium break-words">{r.title}</span> —
-                    <span className="text-gray-700 break-words"> {r.why_it_fits}</span>
+                    <span className="font-medium break-words">{r.title}</span> —{" "}
+                    <span className="text-gray-800 break-words">{r.why_it_fits}</span>
                   </li>
                 ))}
               </ul>
             ) : (
-              <p className="text-sm text-gray-600">No rationales returned.</p>
+              <p className="text-sm text-gray-800">No rationales returned.</p>
             )}
           </div>
 
-          {/* Tags – mobile-friendly wrap */}
+          {/* Tags – boosted contrast + wrap */}
           <div className="mt-6">
-            <h3 className="font-medium mb-2">Tags</h3>
+            <h3 className="font-medium mb-2 text-gray-900">Tags</h3>
             {Array.isArray(result.tags) && result.tags.length > 0 ? (
               <div className="flex flex-wrap gap-2 max-w-full">
                 {result.tags.map((tag, i) => (
                   <span
                     key={i}
-                    className="px-2 py-1 text-sm bg-gray-100 rounded-lg border break-words whitespace-normal"
+                    className="px-2 py-1 text-sm bg-slate-100 text-gray-900 rounded-lg border border-slate-300 break-words whitespace-normal"
                   >
                     {tag}
                   </span>
                 ))}
               </div>
             ) : (
-              <p className="text-sm text-gray-600">No tags returned.</p>
+              <p className="text-sm text-gray-800">No tags returned.</p>
             )}
           </div>
 
@@ -258,7 +256,7 @@ export default function TitleToolPage() {
         </section>
       )}
 
-      <footer className="text-xs text-gray-500 mt-6">
+      <footer className="text-xs text-gray-700 mt-6">
         Images are processed to generate titles; nothing is stored.
       </footer>
     </main>
