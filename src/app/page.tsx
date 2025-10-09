@@ -6,7 +6,7 @@ export default function Home() {
     <main className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-slate-100 flex flex-col items-center justify-center px-4">
       <div className="text-center max-w-xl">
         <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight text-gray-800 mb-3">
-          Abstract Horizons Tools
+          The Abstract Horizons Toolkit
         </h1>
         <p className="text-gray-600 text-base sm:text-lg mb-8">
           A growing collection of intuitive tools designed to support expressive
