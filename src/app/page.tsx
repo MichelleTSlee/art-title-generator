@@ -9,22 +9,38 @@ export default function Home() {
           The Abstract Horizons Toolkit
         </h1>
         <p className="text-gray-600 text-base sm:text-lg mb-8">
-          A growing collection of intuitive tools designed to support expressive
-          abstract artists, helping you find words, ideas, and clarity in your creative process.
+          A growing collection of tools to support expressive
+          abstract artists find words, ideas and clarity in their creative process.
         </p>
 
         <Link
           href="/title"
           className="inline-flex items-center justify-center rounded-xl bg-black text-white font-medium px-6 py-3 sm:px-8 sm:py-4 shadow-md hover:shadow-lg hover:bg-gray-800 transition-all duration-200"
         >
-          ✨ Open the Art Title Generator
+          🎨 The Art Title Generator Tool
         </Link>
+        <div className="mt-4">
+          <a
+            href="/statement"
+            className="inline-flex items-center justify-center rounded-xl bg-gray-900 text-white font-medium px-6 py-3 shadow hover:bg-gray-800 transition"
+          >
+            📝 The Artist Statement Tool
+          </a>
+        </div>
+
+        <div className="mt-4">
+        <a
+          href="/abstractify"
+          className="inline-flex items-center justify-center rounded-xl bg-gray-900 text-white font-medium px-6 py-3 shadow hover:bg-gray-800 transition"
+        >
+          🧠 The Photo to Abstract Landscape Ideas Tool        </a>
+      </div>
 
         <div className="mt-10 text-gray-500 text-sm">
           <p>More tools coming soon:</p>
           <ul className="mt-1 space-y-1">
-            <li>- Artist Statement & Bio Assistant</li>
-            <li>- Abstractifier: Transform your landscape photos into expressive forms</li>
+            <li>- Artist Series Builder</li>
+            <li>- Who Paints Like this?</li>
             <li>- Creative Prompt Randomiser</li>
           </ul>
         </div>
