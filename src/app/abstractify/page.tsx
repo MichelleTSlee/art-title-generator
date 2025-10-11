@@ -164,12 +164,12 @@ export default function AbstractifyPage() {
     }
   }
 
-  const copy = (t: string) => navigator.clipboard.writeText(t);
-
   return (
     <main className="mx-auto max-w-xl p-4 sm:p-6 bg-white text-gray-900">
       <header className="mb-6 sm:mb-8">
-        <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight">The Photo to Abstract Landscape Ideas Tool</h1>
+        <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight">
+          The Photo to Abstract Landscape Ideas Tool
+        </h1>
         <p className="text-sm text-gray-700 mt-2">
           Upload a photo of a landscape, and the tool will suggest five different ways to approach it as an abstract painting.
         </p>
@@ -234,7 +234,7 @@ export default function AbstractifyPage() {
         <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2">
           <button
             onClick={handleGenerate}
-            disabled={loading || !imageDataUrl /* or your condition */}
+            disabled={loading || !imageDataUrl}
             className="px-4 py-2 rounded-xl bg-black text-white disabled:opacity-50"
           >
             {loading ? "Thinking…" : "Generate"}
@@ -300,18 +300,6 @@ export default function AbstractifyPage() {
                       )}
                     </div>
                   )}
-                  <div className="mt-2">
-                    <button
-                      className="text-sm underline"
-                      onClick={() =>
-                        copy(
-                          `Level ${p.level} — ${p.label}\n\nWhat to do:\n${p.what_to_do}\n\nWhy it’s interesting:\n${p.why_interesting}`
-                        )
-                      }
-                    >
-                      Copy
-                    </button>
-                  </div>
                 </div>
               ))}
             </div>
