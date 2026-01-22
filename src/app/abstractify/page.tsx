@@ -1,5 +1,6 @@
 "use client";
 import React, { useRef, useState, useCallback } from "react";
+import Link from "next/link";
 
 type Path = {
   level: 1 | 2 | 3 | 4 | 5;
@@ -311,7 +312,10 @@ export default function AbstractifyPage() {
         </div>
       )}
 
-      <footer className="text-xs text-gray-700 mt-6">
+      <footer className="text-xs text-gray-700 mt-6 text-center">
+        <Link href="/" className="text-sm text-gray-600 hover:text-gray-900 block mb-2">
+          ← Back to home
+        </Link>
         Images are processed to generate suggestions; nothing is stored.
       </footer>
     </main>

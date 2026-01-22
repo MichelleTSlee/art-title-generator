@@ -3,6 +3,7 @@
 // ======================
 "use client";
 import React, { useMemo, useState } from "react";
+import Link from "next/link";
 
 // ---- Strong types for questions/answers ----
 type QKey =
@@ -304,7 +305,10 @@ async function copyTextSafe(key: "statement" | "bio", text: string) {
 )}
 
 
-      <footer className="text-xs text-gray-700 mt-6">
+      <footer className="text-xs text-gray-700 mt-6 text-center">
+        <Link href="/" className="text-sm text-gray-600 hover:text-gray-900 block mb-2">
+          ← Back to home
+        </Link>
         Text is processed to generate your statement; nothing is stored.
       </footer>
     </main>

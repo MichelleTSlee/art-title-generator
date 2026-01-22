@@ -1,5 +1,6 @@
 "use client";
 import React, { useRef, useState, useCallback } from "react";
+import Link from "next/link";
 
 const TONES = ["poetic", "cinematic", "minimal", "lyrical", "mysterious"] as const;
 type Tone = typeof TONES[number];
@@ -256,7 +257,10 @@ export default function TitleToolPage() {
         </section>
       )}
 
-      <footer className="text-xs text-gray-700 mt-6">
+      <footer className="text-xs text-gray-700 mt-6 text-center">
+        <Link href="/" className="text-sm text-gray-600 hover:text-gray-900 block mb-2">
+          ← Back to home
+        </Link>
         Images are processed to generate titles; nothing is stored.
       </footer>
     </main>
