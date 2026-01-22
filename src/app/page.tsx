@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-slate-100 flex flex-col items-center justify-center px-4">
+    <main className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-slate-100 flex flex-col items-center justify-center px-4 pt-16">
       <div className="text-center max-w-xl">
         <h1 className="text-3xl sm:text-4xl font-semibold tracking-tight text-gray-800 mb-3">
           The Abstract Horizons Toolkit
