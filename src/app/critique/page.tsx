@@ -1,5 +1,6 @@
 "use client";
 import React, { useRef, useState, useCallback } from "react";
+import Link from "next/link";
 
 type CritiqueResult = {
   opening: string;
@@ -166,9 +167,9 @@ export default function CritiquePage() {
   return (
     <main className="mx-auto max-w-3xl p-4 sm:p-6 bg-white text-gray-900 min-h-screen">
       <header className="mb-6 sm:mb-8">
-        <a href="/" className="text-sm text-gray-600 hover:text-gray-900 mb-3 inline-block">
+        <Link href="/" className="text-sm text-gray-600 hover:text-gray-900 mb-3 inline-block">
           ← Back to home
-        </a>
+        </Link>
         <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight">
           💬 Art Critique Tool
         </h1>
@@ -270,9 +271,9 @@ export default function CritiquePage() {
       )}
 
       <footer className="mt-8 text-center">
-        <a href="/" className="text-sm text-gray-600 hover:text-gray-900">
+        <Link href="/" className="text-sm text-gray-600 hover:text-gray-900">
           ← Back to home
-        </a>
+        </Link>
       </footer>
     </main>
   );

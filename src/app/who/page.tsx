@@ -1,5 +1,6 @@
 "use client";
 import React, { useRef, useState, useCallback } from "react";
+import Link from "next/link";
 
 type ArtistMatch = {
   name: string;
@@ -174,9 +175,9 @@ export default function WhoPage() {
   return (
     <main className="mx-auto max-w-3xl p-4 sm:p-6 bg-white text-gray-900 min-h-screen">
       <header className="mb-6 sm:mb-8">
-        <a href="/" className="text-sm text-gray-600 hover:text-gray-900 mb-3 inline-block">
+        <Link href="/" className="text-sm text-gray-600 hover:text-gray-900 mb-3 inline-block">
           ← Back to home
-        </a>
+        </Link>
         <h1 className="text-2xl sm:text-3xl font-semibold tracking-tight">
           🎨 Who Paints Like This?
         </h1>
@@ -281,9 +282,9 @@ export default function WhoPage() {
       )}
 
       <footer className="mt-8 text-center">
-        <a href="/" className="text-sm text-gray-600 hover:text-gray-900">
+        <Link href="/" className="text-sm text-gray-600 hover:text-gray-900">
           ← Back to home
-        </a>
+        </Link>
       </footer>
     </main>
   );
