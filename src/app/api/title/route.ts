@@ -116,11 +116,28 @@ async function callModel(
 
 export async function POST(req: NextRequest) {
   try {
-    const { imageDataUrl, tone = "poetic", keywords = "" } =
-      (await req.json()) as Payload;
+    let body;
+    try {
+      body = await req.json();
+    } catch (e) {
+      return new Response(JSON.stringify({ error: "Invalid request body" }), {
+        status: 400,
+        headers: { "Content-Type": "application/json" },
+      });
+    }
+
+    const { imageDataUrl, tone = "poetic", keywords = "" } = body as Payload;
 
     if (!imageDataUrl?.startsWith("data:image/")) {
       return new Response(JSON.stringify({ error: "Missing or invalid image" }), {
+        status: 400,
+        headers: { "Content-Type": "application/json" },
+      });
+    }
+
+    // Check if image data URL is too large (e.g., > 10MB)
+    if (imageDataUrl.length > 10_000_000) {
+      return new Response(JSON.stringify({ error: "Image too large. Please use a smaller image." }), {
         status: 400,
         headers: { "Content-Type": "application/json" },
       });
@@ -136,12 +153,22 @@ export async function POST(req: NextRequest) {
     // First attempt (normal)
     let text = await callModel(imageDataUrl, userPrompt, schema, false);
     let parsed: unknown;
-    try { parsed = JSON.parse(text); } catch { parsed = undefined; }
+    try { 
+      parsed = JSON.parse(text); 
+    } catch (parseError) { 
+      console.error("JSON parse error (first attempt):", parseError);
+      parsed = undefined; 
+    }
 
     // If invalid, retry with stricter JSON instruction
     if (!isTitleResult(parsed)) {
       text = await callModel(imageDataUrl, userPrompt, schema, true);
-      try { parsed = JSON.parse(text); } catch { parsed = undefined; }
+      try { 
+        parsed = JSON.parse(text); 
+      } catch (parseError) { 
+        console.error("JSON parse error (second attempt):", parseError);
+        parsed = undefined; 
+      }
     }
 
     if (!isTitleResult(parsed)) {
@@ -160,7 +187,17 @@ export async function POST(req: NextRequest) {
       headers: { "Content-Type": "application/json" },
     });
   } catch (e) {
-    const message = e instanceof Error ? e.message : "Unexpected server error";
+    console.error("Title API error:", e);
+    let message = "Unexpected server error";
+    
+    if (e instanceof Error) {
+      message = e.message;
+      // Check for specific OpenAI or network errors
+      if (message.includes("Invalid")) {
+        message = `Image processing error: ${message}`;
+      }
+    }
+    
     return new Response(JSON.stringify({ error: message }), {
       status: 500,
       headers: { "Content-Type": "application/json" },
