@@ -143,6 +143,8 @@ export default function TitleToolPage() {
           )}
           <input
             ref={fileRef}
+            id="title-artwork-image"
+            name="title-artwork-image"
             type="file"
             accept="image/*"
             className="hidden"

@@ -220,7 +220,7 @@ export default function CritiquePage() {
               </div>
             </div>
           )}
-          <input ref={fileRef} type="file" accept="image/*" className="hidden" onChange={onFileInputChange} />
+          <input ref={fileRef} id="critique-artwork-image" name="critique-artwork-image" type="file" accept="image/*" className="hidden" onChange={onFileInputChange} />
         </div>
 
         {/* GENERATE BUTTON */}

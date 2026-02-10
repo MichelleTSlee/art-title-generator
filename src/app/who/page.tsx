@@ -228,7 +228,7 @@ export default function WhoPage() {
               </div>
             </div>
           )}
-          <input ref={fileRef} type="file" accept="image/*" className="hidden" onChange={onFileInputChange} />
+          <input ref={fileRef} id="who-artwork-image" name="who-artwork-image" type="file" accept="image/*" className="hidden" onChange={onFileInputChange} />
         </div>
 
         {/* OPTIONAL DESCRIPTION */}

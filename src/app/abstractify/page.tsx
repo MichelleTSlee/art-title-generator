@@ -218,7 +218,7 @@ export default function AbstractifyPage() {
               </div>
             </div>
           )}
-          <input ref={fileRef} type="file" accept="image/*" className="hidden" onChange={onFileInputChange} />
+          <input ref={fileRef} id="abstractify-artwork-image" name="abstractify-artwork-image" type="file" accept="image/*" className="hidden" onChange={onFileInputChange} />
         </div>
 
         {/* Notes */}

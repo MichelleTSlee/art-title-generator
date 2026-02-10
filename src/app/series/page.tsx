@@ -227,7 +227,7 @@ export default function SeriesPage() {
               </div>
             </div>
           )}
-          <input ref={fileRef} type="file" accept="image/*" className="hidden" onChange={onFileInputChange} />
+          <input ref={fileRef} id="series-artwork-image" name="series-artwork-image" type="file" accept="image/*" className="hidden" onChange={onFileInputChange} />
         </div>
 
         {/* GENERATE BUTTON */}
