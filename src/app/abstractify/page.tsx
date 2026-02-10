@@ -225,6 +225,8 @@ export default function AbstractifyPage() {
         <label className="flex flex-col">
           <span className="text-sm mb-1">Optional notes (intent, palette loves, constraints)</span>
           <textarea
+            id="abstractify-notes"
+            name="abstractify-notes"
             className="border border-slate-400 rounded-lg p-2 min-h-[90px]"
             placeholder="e.g., keep a sense of horizon; love cool greys + raw umber; prefer knife/roller; avoid literal trees."
             value={notes}

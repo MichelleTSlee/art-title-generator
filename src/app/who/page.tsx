@@ -237,6 +237,8 @@ export default function WhoPage() {
         <label className="flex flex-col">
           <span className="text-sm mb-1">Describe your painting</span>
           <textarea
+            id="who-description"
+            name="who-description"
             className="border border-slate-400 rounded-lg p-2 min-h-[90px]"
             placeholder="e.g., thick impasto layers, scraped back in places, muted blues and greys, gestural marks with palette knife..."
             value={description}

@@ -157,6 +157,8 @@ export default function TitleToolPage() {
           <label className="flex flex-col">
             <span className="text-sm mb-1 text-gray-900">Tone</span>
             <select
+              id="title-tone"
+              name="title-tone"
               value={tone}
               onChange={(e) => setTone(e.target.value as Tone)}
               className="border border-slate-400 rounded-lg p-2 bg-white text-gray-900 focus:outline-none focus:ring-2 focus:ring-black"
@@ -171,6 +173,8 @@ export default function TitleToolPage() {
           <label className="flex flex-col">
             <span className="text-sm mb-1 text-gray-900">Keywords (optional)</span>
             <input
+              id="title-keywords"
+              name="title-keywords"
               className="border border-slate-400 rounded-lg p-2 bg-white text-gray-900 placeholder-gray-600 focus:outline-none focus:ring-2 focus:ring-black"
               placeholder="e.g., mist, winter dusk, tidal flats, memory"
               value={keywords}

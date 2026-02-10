@@ -223,6 +223,8 @@ async function copyTextSafe(key: "statement" | "bio", text: string) {
               const k: QKey = current.key;
               return (
                 <textarea
+                  id={`statement-${k}`}
+                  name={`statement-${k}`}
                   className="border border-slate-400 rounded-lg p-3 min-h-[110px]"
                   placeholder={current.placeholder}
                   value={answers[k]}
