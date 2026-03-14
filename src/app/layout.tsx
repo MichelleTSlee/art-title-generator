@@ -18,8 +18,18 @@ export default function RootLayout({
         <meta name="color-scheme" content="light" />
         <meta name="theme-color" content="#ffffff" />
       </head>
-      <body className="bg-white text-gray-900 antialiased">
-        {children}
+      <body className="min-h-screen bg-white text-gray-900 antialiased">
+        <div className="min-h-screen flex flex-col">
+          <div className="flex-1">{children}</div>
+          <footer className="border-t border-gray-200 bg-white/95 px-4 py-5 text-center text-sm text-gray-600">
+            <p>
+              <span className="font-semibold">AI Notice</span>
+            </p>
+            <p className="mt-1 max-w-3xl mx-auto">
+              This tool uses AI to generate creative suggestions. Responses may occasionally be inaccurate or unexpected, so please use your own judgement when applying them in your work.
+            </p>
+          </footer>
+        </div>
       </body>
     </html>
   );

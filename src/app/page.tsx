@@ -64,10 +64,6 @@ export default function Home() {
         </div>
 
       </div>
-
-      <footer className="mt-16 text-xs text-gray-400">
-        © {new Date().getFullYear()} Abstract Horizons · Built by Michelle Slee
-      </footer>
     </main>
   );
 }
