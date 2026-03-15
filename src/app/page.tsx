@@ -12,10 +12,8 @@ export default function Home() {
           A collection of tools to support expressive
           abstract artists find words, ideas and clarity in their creative process.
         </p>
-        <p className="text-gray-600 text-sm sm:text-base mb-8">
-          Note: This tool uses AI to offer ideas and prompts to support your creative
-          practice. Occasionally responses may be imperfect, so please treat them as
-          suggestions only and trust your own artistic judgement. Click the links below
+        <p className="text-gray-600 text-sm sm:text-base mb-8 italic">
+          Note: This tool uses AI to offer ideas and prompts to support your creative practice. AI can make mistakes. Always use your own judgement. Click the links below
           to access each tool.
         </p>
 

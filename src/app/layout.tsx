@@ -26,7 +26,7 @@ export default function RootLayout({
               <span className="font-semibold">AI Notice</span>
             </p>
             <p className="mt-1 max-w-3xl mx-auto">
-              This tool uses AI to generate creative suggestions. Responses may occasionally be inaccurate or unexpected, so please use your own judgement when applying them in your work.
+              This tool uses AI to generate creative suggestions. AI can make mistakes. Always use your own judgement.
             </p>
           </footer>
         </div>
