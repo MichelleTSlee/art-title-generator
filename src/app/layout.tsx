@@ -1,5 +1,6 @@
 import "./globals.css";
 import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Abstract Horizons Tools",
@@ -28,6 +29,27 @@ export default function RootLayout({
             <p className="mt-1 max-w-3xl mx-auto">
               This tool uses AI to generate creative suggestions. AI can make mistakes. Always use your own judgement.
             </p>
+            <nav aria-label="Legal links" className="mt-3">
+              <ul className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-sm">
+                <li>
+                  <Link href="/privacy" className="hover:text-gray-900 underline-offset-2 hover:underline">
+                    Privacy
+                  </Link>
+                </li>
+                <li aria-hidden="true">|</li>
+                <li>
+                  <Link href="/terms" className="hover:text-gray-900 underline-offset-2 hover:underline">
+                    Terms of Service
+                  </Link>
+                </li>
+                <li aria-hidden="true">|</li>
+                <li>
+                  <Link href="/cookies" className="hover:text-gray-900 underline-offset-2 hover:underline">
+                    Cookies
+                  </Link>
+                </li>
+              </ul>
+            </nav>
           </footer>
         </div>
       </body>
