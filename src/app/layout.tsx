@@ -33,19 +33,13 @@ export default function RootLayout({
               <ul className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-sm">
                 <li>
                   <Link href="/privacy" className="hover:text-gray-900 underline-offset-2 hover:underline">
-                    Privacy
+                    Privacy Policy
                   </Link>
                 </li>
                 <li aria-hidden="true">|</li>
                 <li>
                   <Link href="/terms" className="hover:text-gray-900 underline-offset-2 hover:underline">
                     Terms of Service
-                  </Link>
-                </li>
-                <li aria-hidden="true">|</li>
-                <li>
-                  <Link href="/cookies" className="hover:text-gray-900 underline-offset-2 hover:underline">
-                    Cookies
                   </Link>
                 </li>
               </ul>
